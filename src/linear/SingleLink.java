@@ -48,22 +48,6 @@ public class SingleLink<T> {
     }
 
     /**
-     * 返回链表长度
-     * @return
-     */
-    public int length() {
-        return count;
-    }
-
-    /**
-     * 判断该链表是否为空
-     * @return
-     */
-    public boolean isEmpty() {
-        return count == 0;
-    }
-
-    /**
      * 获取某位置的节点
      * @param index
      * @return
@@ -74,6 +58,7 @@ public class SingleLink<T> {
         if (index < 0 || index >= count) {
             throw new IndexOutOfBoundsException();
         }
+
 
         /*遍历节点并得出某下标的节点，时间复杂度O(n)*/
         Node<T> node = head.next;
@@ -124,6 +109,7 @@ public class SingleLink<T> {
         Node<T> node = getNode(index);
         Node<T> prevNode = getNode(index-1);
         prevNode.next = node.next;
+        node = null;
         count--;
         return;
     }
@@ -131,7 +117,7 @@ public class SingleLink<T> {
     /**
      * 删除第一个节点
      */
-    public void deleteFrist() {
+    public void deleteFirst() {
         deleteNode(0);
     }
 
@@ -141,6 +127,7 @@ public class SingleLink<T> {
     public void deleteLast() {
         Node<T> node = getNode(count-2);
         node.next = head;
+        node = null;
         count--;
     }
 
@@ -148,7 +135,7 @@ public class SingleLink<T> {
      * 将节点插入首部
      * @param t
      */
-    public void addFrist(T t) {
+    public void addFirst(T t) {
         add(0,t);
     }
 
@@ -211,6 +198,22 @@ public class SingleLink<T> {
     }
 
     /**
+     * 返回链表长度
+     * @return
+     */
+    public int length() {
+        return count;
+    }
+
+    /**
+     * 判断该链表是否为空
+     * @return
+     */
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
+    /**
      * 测试
      * @param args
      */
@@ -219,14 +222,14 @@ public class SingleLink<T> {
         link.addLast(1);
         link.addLast(3);
         link.add(1,2);
-        link.addFrist(0);
+        link.addFirst(0);
         link.print();
         System.out.println();
         System.out.println(link.getFirst());
         System.out.println(link.getLast());
         System.out.println(link.get(1));
         System.out.println(link.length());
-        link.deleteFrist();
+        link.deleteFirst();
         link.print();
         System.out.println();
         link.deleteLast();
