@@ -116,8 +116,9 @@ public class SingleLink<T> {
 
         /*删除第一个节点*/
         if (index == 0) {
-            head.next = getNode(index+1);
+            head.next = getNode(1);
             count--;
+            return;
         }
 
         Node<T> node = getNode(index);
@@ -216,8 +217,23 @@ public class SingleLink<T> {
     public static void main(String[] args) {
         SingleLink<Integer> link = new SingleLink<>();
         link.addLast(1);
-        link.addLast(2);
+        link.addLast(3);
+        link.add(1,2);
+        link.addFrist(0);
         link.print();
+        System.out.println();
         System.out.println(link.getFirst());
+        System.out.println(link.getLast());
+        System.out.println(link.get(1));
+        System.out.println(link.length());
+        link.deleteFrist();
+        link.print();
+        System.out.println();
+        link.deleteLast();
+        link.print();
+        System.out.println();
+        link.deleteNode(1);
+        link.print();
+
     }
 }
